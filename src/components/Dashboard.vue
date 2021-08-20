@@ -1,12 +1,5 @@
 <template>
-    <div>    
-        <h2>Dashboard</h2>    
-        <p>Name: {{ user.name }}</p>    
-        <p>Country: {{ user.country }}</p>    
-        <p>Currency: {{ user.currency }}</p>   
-
-
-	
+    <div>     
 	<table>
 		 <thead>
 			  <tr>
@@ -16,14 +9,14 @@
 			   <th>Last 24 Hour's Volume</th>
 			  </tr>
 		 </thead>
-		 <!--tbody id="cryptoSection"  v-for="item in cryptoData">
+		 <tbody id="cryptoSection"  v-for="item in cryptoData">
 			 <tr>
 				<td>{{ item.cryptoCurrency }}</td>
 				<td>{{ item.last_trade_price }}</td>
 				<td>{{ item.price_24h }}</td>
 				<td>{{ item.volume_24h }}</td>
 			 </tr>
-		 </tbody-->
+		 </tbody>  
 	</table>
     </div>
 	
@@ -69,7 +62,7 @@
         },    
         mounted() {    
             this.getUserData();     
-            //this.getCryptoData();    //@todo: fix 
+            this.getCryptoData();    //@todo: fix 
         }    
     }
 </script>

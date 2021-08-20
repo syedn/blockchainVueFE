@@ -1,4 +1,6 @@
-<template>
+<template>    
+	<div class="vertical-center">
+    <div class="inner-block">
     <div class="vue-tempalte">
         <form v-on:submit="login">
             <h3>Sign In</h3>
@@ -28,6 +30,8 @@
             </div>
 
         </form>
+    </div>
+    </div>
     </div>
 </template>
 

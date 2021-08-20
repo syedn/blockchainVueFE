@@ -6,27 +6,43 @@
         <a class="navbar-brand float-left" href="#" target="_blank">
            Blockchain Dashboard
         </a>
-        <ul class="nav navbar-nav flex-row float-right">
-          <!--li class="nav-item">
-            <router-link class="nav-link pr-3" to="/login">Sign in</router-link>
-          </li-->
-          <li class="nav-item" v-if="userLoggedin === false">
+		 
+		
+        <ul class="nav navbar-nav flex-row float-right" v-if="userLoggedin === false" >
+          <li class="nav-item">
             <router-link class="btn btn-outline-primary" to="/">Sign up</router-link>
+          </li> 
+        </ul> 
+		
+        <ul class="nav navbar-nav flex-row float-right" v-if="userLoggedin === true" > 
+		
+          <li class="nav-item countryCurrency" >
+				{{user.country}} ({{user.currency}})
           </li>
-          <li class="nav-item" v-if="userLoggedin === true">
-            <a class="btn btn-outline-primary" href="#" v-on:click="logout">Logout</a>
+		  
+          <li class="nav-item">
+			<div class="dropdown">
+			  <button class="btn btn-outline-primary">{{user.name}}</button>
+			  <div class="dropdown-content">
+				<a href="#">Dashboard</a>
+				<a href="#">Edit Profile</a> 
+				<a href="#" v-on:click="logout">Log Out</a>
+			  </div>
+			</div> 
           </li>
-        </ul>
+		  
+        </ul> 
+
+
       </div>
     </nav>
+		
+	 
+		
 
     <!-- Main -->
-    <div class="App">
-      <div class="vertical-center">
-        <div class="inner-block">
-          <router-view />
-        </div>
-      </div>
+    <div class="App"> 
+          <router-view /> 
     </div>
   </div>
 </template>
@@ -40,31 +56,40 @@
         name: "App",    
         data() {     
             return {     
-				userLoggedin: false 				
+				userLoggedin: false, 
+				user: {}
             }    
         },    
         methods: {    
-			ifUserLoggedin: function() {    
+			getUserInfo: function() {    
 				axios.get("/api/user")    
 					.then((response) => {
+					console.log("bcz I am called again")
 						let self = this; 
 						self.$set(this, "userLoggedin", true);    
+						self.$set(this, "user", response.data.user);    
 					})    
 					.catch((errors) => {    
 						console.log(errors);    
 					 })    
 				}, 
-			logout: function (e) {
+			logout: function () {
+					console.log("loggedout")
 			  axios.get("/api/logout")
-				.then(() => {
+				.then(() => { 
 				  let self = this; 
 				  self.$set(this, "userLoggedin", false);  
+				  self.$set(this, "user", {}); 
 				  router.push("/")
 				})
 			}  
         },    
+		mounted() { this.getUserInfo();  },
         updated() {      
-            this.ifUserLoggedin();     
+		//if new values are diff than the old ones 
+			if(this.userLoggedin === false){
+				this.getUserInfo();  
+			}     
         }    
     }
 </script>
