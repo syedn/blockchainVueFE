@@ -30,14 +30,14 @@
           <input v-if="cryptoItem.icon === 'btc'"  type="radio" :id="'radio_' + cryptoItem.cryptoCurrency"  name="basic_carousel" :value="cryptoItem.cryptoCurrency"  checked="checked"/>
           <input v-if="cryptoItem.icon !== 'btc'" type="radio" :id="'radio_' + cryptoItem.cryptoCurrency"  name="basic_carousel" :value="cryptoItem.cryptoCurrency"/>
           <label class="" :for="'radio_' + cryptoItem.cryptoCurrency" > 
-			<i v-if="!['efi','clout','dgld'].includes(cryptoItem.icon)" :class="'sideIcon cf cf-' + cryptoItem.icon" ></i> 
-			<i v-if="['efi','clout','dgld'].includes(cryptoItem.icon)" class="sideIcon cf cf-btc" ></i> 
+			<i v-if="!['efi','clout','dgld','sushi'].includes(cryptoItem.icon)" :class="'sideIcon cf cf-' + cryptoItem.icon" ></i> 
+			<i v-if="['efi','clout','dgld','sushi'].includes(cryptoItem.icon)" class="sideIcon cf cf-btc" ></i> 
 			
 				{{ cryptoItem.cryptoCurrency }}</label>
           
 		  <div class="content content_strawberry"> 
-		  <i v-if="!['efi','clout','dgld'].includes(cryptoItem.icon)"  :class="'mainIcon cf cf-' + cryptoItem.icon" ></i>
-		  <i v-if="['efi','clout','dgld'].includes(cryptoItem.icon)" class="mainIcon cf cf-btc" ></i> 
+		  <i v-if="!['efi','clout','dgld','sushi'].includes(cryptoItem.icon)"  :class="'mainIcon cf cf-' + cryptoItem.icon" ></i>
+		  <i v-if="['efi','clout','dgld','sushi'].includes(cryptoItem.icon)" class="mainIcon cf cf-btc" ></i> 
             <h1>{{ cryptoItem.cryptoCurrency }}</h1>
             <p>Last Traded Price {{ cryptoItem.last_trade_price }} {{user.currency}}</p>
             <p>Current Price(Last 24 Hours) {{ cryptoItem.price_24h }} {{user.currency}} </p>
