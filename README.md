@@ -9,10 +9,13 @@
 npm install
 
 # serve with hot reload at localhost:8080
-npm run dev
+1. npm run dev
+2. uncomment line proxyTable -> api in config/index.js
 
 # build for production with minification
-npm run build
+1. npm run build
+2. copy the absolute path to the dist folder and paste in backend application (app.js)
+3. comment line proxyTable -> api in config/index.js
 
 # build for production and view the bundle analyzer report
 npm run build --report
