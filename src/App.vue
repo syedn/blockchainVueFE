@@ -1,12 +1,9 @@
 <template>
   <div class="vue-tempalte">
     <!-- Navigation -->
-    <nav class="navbar shadow bg-white rounded justify-content-between flex-nowrap flex-row fixed-top">
-      <div class="container">
-        <a class="navbar-brand float-left" href="#" target="_blank">
-           Blockchain Dashboard
-        </a>
-		 
+    <nav class="navbar shadow rounded justify-content-between flex-nowrap flex-row fixed-top">
+      <div class="container"> 
+		 <span class="page-title  float-left">BLOCKCHAIN DASHBOARD</span>
 		
         <ul class="nav navbar-nav flex-row float-right" v-if="userLoggedin === false" >
           <li class="nav-item">
@@ -46,8 +43,7 @@
     </div>
   </div>
 </template>
- 
-
+  
 <script>
     import axios from "axios";    
     import router from "./router";  

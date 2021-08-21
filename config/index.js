@@ -11,7 +11,7 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-		"/api": "http://localhost:3000" //@todo: remove it in production. change according to server port in development
+		//"/api": "http://localhost:3000" //@todo: remove it in production. change according to server port in development
 	}, //proxying allows our back-end server to think that the front-end is running on the same port as itself.
 
     // Various Dev Server settings

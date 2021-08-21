@@ -8,12 +8,14 @@
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "lint": "eslint --ext .js,.vue src",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "scss": "node-sass --watch src/assets/scss/ -o src/assets/compiledcss "
   },
   "dependencies": {
     "@vue/cli": "^4.5.8",
     "axios": "^0.21.1",
     "bootstrap": "^5.1.0",
+    "crypto-symbol": "^1.0.17",
     "money": "^0.2.0",
     "vue": "^2.5.2",
     "vue-cookies": "^1.7.4",
