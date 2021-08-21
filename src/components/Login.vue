@@ -17,7 +17,7 @@
   
             <button type="submit" class="loginBtn btn btn-dark btn-lg btn-block">Sign In</button>
  
-			<p class="incorrectAuth" v-if="inCorrectAuth === true">Invalid Username or Password.</p>
+			<p class="incorrectAuth" v-if="incorrectAuth === true">Invalid Username or Password.</p>
 
         </form>
     </div>
@@ -31,37 +31,41 @@
     import axios from "axios";   
 	
     export default {    
-        name: "Login",    
+        name: "Login"  ,    
         data() {     
-            return {    
-                inCorrectAuth: false 		
+            return {     
+				incorrectAuth: false 
             }    
         },
         methods: {    
-            login: (e) => {    
+            login: function(e) {     
                 e.preventDefault()    
                 //let userEmail = "jhondoe@gmail.com";   //@todo: change in production
                 //let userPassword = "jhonPassword";   
                 let userEmail = e.target.elements.userEmail.value  
-                let userPassword = e.target.elements.userPassword.value   
+                let userPassword = e.target.elements.userPassword.value 
                 let login = () => {    
                     let data = {    
                         userEmail: userEmail,    
                         userPassword: userPassword    
-                    }    
+                    }          
                     axios.post("/api/login", data)    
                         .then((response) => {    
                             router.push("/dashboard")    
                         })    
-                        .catch((errors) => { 
-                        //let self = this;
-							//self.$set(this, "inCorrectAuth", true); 
+                        .catch((errors) => {  
+                            let self = this; 
+
+                            self.$set(this, "incorrectAuth", true); 
+				
+				
                             console.log("Cannot log in")    
                         })    
                 }    
                 login()    
             }, 
-            isUserLoggedin: function() {    
+            isUserLoggedin: function() {  
+  			
                 axios.get("/api/user")    
                     .then((response) => {      
                         router.push("/dashboard");    
@@ -71,7 +75,7 @@
                     })    
             }    
         },    
-        mounted() {    
+        mounted() {      
             this.isUserLoggedin()    
         }   
     }
