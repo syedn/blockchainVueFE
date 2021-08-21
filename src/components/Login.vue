@@ -17,7 +17,7 @@
   
             <button type="submit" class="loginBtn btn btn-dark btn-lg btn-block">Sign In</button>
  
- 
+			<p class="incorrectAuth" v:if="inCorrectAuth === true">Invalid Username or Password.</p>
 
         </form>
     </div>
@@ -32,6 +32,11 @@
 	
     export default {    
         name: "Login",    
+        data() {     
+            return {    
+                inCorrectAuth: false 		
+            }    
+        },
         methods: {    
             login: (e) => {    
                 e.preventDefault()    
@@ -48,7 +53,8 @@
                         .then((response) => {    
                             router.push("/dashboard")    
                         })    
-                        .catch((errors) => {    
+                        .catch((errors) => { 
+							self.$set(this, "inCorrectAuth", true); 
                             console.log("Cannot log in")    
                         })    
                 }    
