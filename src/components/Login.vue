@@ -54,7 +54,8 @@
                             router.push("/dashboard")    
                         })    
                         .catch((errors) => { 
-							self.$set(this, "inCorrectAuth", true); 
+                        //let self = this;
+							//self.$set(this, "inCorrectAuth", true); 
                             console.log("Cannot log in")    
                         })    
                 }    
