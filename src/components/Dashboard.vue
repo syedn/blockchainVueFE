@@ -191,8 +191,8 @@
         },    
         mounted() {    
             this.getUserData();    
-			this.getCryptoDummyData(); //@todo: comment in production
-			//this.getCryptoData(); //@todo: uncomment later    
+			//this.getCryptoDummyData(); //@todo: comment in production
+			this.getCryptoData(); //@todo: uncomment in production    
         }
     }
 </script>
