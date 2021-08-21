@@ -17,7 +17,7 @@
   
             <button type="submit" class="loginBtn btn btn-dark btn-lg btn-block">Sign In</button>
  
-			<p class="incorrectAuth" v:if="inCorrectAuth === true">Invalid Username or Password.</p>
+			<p class="incorrectAuth" v-if="inCorrectAuth === true">Invalid Username or Password.</p>
 
         </form>
     </div>
